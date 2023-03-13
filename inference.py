@@ -98,12 +98,11 @@ class Inference:
         img = img.cuda()
         img = Variable(img).to(self.device)
         out = self.model(img, meta)
-
         _, pred = torch.max(out.data, 1)
         predict = self.classes[pred.data.item()]
         # print(Fore.MAGENTA + f"The Prediction is: {predict}")
         return predict
-
+    
 
 def parse_option():
     parser = argparse.ArgumentParser('MetaFG Inference script', add_help=False)
